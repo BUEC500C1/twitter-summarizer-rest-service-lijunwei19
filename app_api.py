@@ -1,78 +1,37 @@
-from flask import Flask, request
+from flask import Flask, send_from_directory
 from flask_restful import Resource, Api
+from twitter_API import twitter_video
+import os
 import time
+
 
 app = Flask(__name__)
 api = Api(app)
 
-user_list = {
-    'Nick' :{
-                'user_id': 'Nick',
-                'create_time':'Tue Aug  2 07:47:02 2016',
-                'search_history':{},
-                'twitter_id': { 'twitter_texts':[],
-                                'twitter_images':[],
-                                'twitter_videos':[]
-                                }
-                },
-    'Jason': {
-                'user_id': 'Jason',
-                'create_time':'Tue Aug  5 07:47:02 2016',
-                'search_history':{},
-                'twitter_id': { 'twitter_texts':[],
-                                'twitter_images':[],
-                                'twitter_videos':[]
-                                }
-                }
-}
-
-def initial_user(user_id):
-    if user_id not in user_list:
-            user_list[user_id]={
-                                'user_id': user_id,
-                                'create_time':time.ctime(),
-                                'search_history':{},
-                                'twitter_id': { 'twitter_texts':[],
-                                                'twitter_images':[],
-                                                'twitter_videos':[]
-                                                }
-                                 }
-
-
-class UserList(Resource):
-    def get(self):
-        return user_list
-    def put (self):
-        user_id = request.form['user_id']
-        initial_user(user_id)      
-        return user_list[user_id]
-
-    def delete(self):
-        user_id = request.form['user_id']
-        try:
-            del user_list[user_id]
-            return f'successfully delete {user_id}'
-        except KeyError:
-            return f"user_id {user_id} not found"
-
 class tweets(Resource):
-    def get(self, user_id):
-        try:
-            return user_list[user_id]
-        except KeyError:
-            return 'invalid user_id'
-    def put (self, user_id):
-        initial_user(user_id)
-        twitter_id = request.form['twitter_id']
-        ###
-        ##
-        # insert twitter api here do some action
-        user_list[user_id]['search_history'][twitter_id] = time.ctime()
-        return 'done'
+  def get(self, twitter_id):
+      twitter_video(twitter_id)   
+      path = os.path.join(app.root_path, 'video/')     
+      file_path = f'{path}{twitter_id}better.mp4'   
+      for _ in range(4):
+        if os.path.exists(file_path):
+          return 'file is ready, download from http://... /download/twitter_id'
+        time.sleep(2)
+      return 'response time out'
 
 
-api.add_resource(UserList, '/users')
-api.add_resource(tweets, '/users/<user_id>')
+class download_video(Resource):
+  def get(self, twitter_id):
+      path = os.path.join(app.root_path, 'video') 
+      filename = f'{twitter_id}better.mp4'   
+      try :    
+        return send_from_directory(directory= path, filename= filename, as_attachment= True)  
+      except Exception as e:
+        return str(e)
+
+
+api.add_resource(tweets, '/search/<twitter_id>')
+api.add_resource(download_video, '/download/<twitter_id>')
 
 if __name__ == '__main__':
     app.run(debug=True)
