@@ -6,7 +6,7 @@ These instruction will help you get you a copy of the project up and running on 
 ### Prerequisites
 Install FFmpeg Source File  
 ```
-[FFmpeg source file](https://www.ffmpeg.org/download.html)
+![FFmpeg source file](https://www.ffmpeg.org/download.html)
 ```
 Apply for Twitter API keys  -- step by step 
 ```
