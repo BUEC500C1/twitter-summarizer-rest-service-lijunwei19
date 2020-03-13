@@ -5,13 +5,13 @@ twitter-summarizer-rest-service-lijunwei19 created by GitHub Classroom. This pro
 These instruction will help you get you a copy of the project up and running on your local macnine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 ### Prerequisites
 Install FFmpeg Source File  
-```
-![FFmpeg source file](https://www.ffmpeg.org/download.html)
-```
+
+[FFmpeg source file](https://www.ffmpeg.org/download.html)
+
 Apply for Twitter API keys  -- step by step 
-```
+
 [Getting start with twitter API](https://developer.twitter.com/en/apply-for-access)
-```
+
 
 Install Python Library
 ```
