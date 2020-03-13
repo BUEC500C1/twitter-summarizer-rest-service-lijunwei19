@@ -24,9 +24,18 @@ pip install tweepy
 pip install flask
 
 pip install flask_rest
+
+pip install pytest
 ```
 ### Installing 
-git clone repository
+1.  Git clone repository
 ```
 git clone https://github.com/BUEC500C1/twitter-summarizer-rest-service-lijunwei19.git
 ```
+2.  Put your keys in keys file 
+
+3.  run in twitter-summarizer-rest-service-lijunwei19 directory 
+```
+pytest
+```
+### Demostration
