@@ -15,17 +15,17 @@ Apply for Twitter API keys  -- step by step
 
 Install Python Library
 ```
-pip install pillow
+pip3 install pillow
 
-pip install requests
+pip3 install requests
 
-pip install tweepy
+pip3 install tweepy
 
-pip install flask
+pip3 install flask
 
-pip install flask_rest
+pip3 install flask_rest
 
-pip install pytest
+pip3 install pytest
 ```
 ### Installing 
 1.  Git clone repository
