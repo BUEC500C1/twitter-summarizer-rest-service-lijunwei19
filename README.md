@@ -38,6 +38,9 @@ git clone https://github.com/BUEC500C1/twitter-summarizer-rest-service-lijunwei1
 ```
 pytest
 ```
+```
+python3 app_api.py
+```
 ### Demostration
 ![](https://github.com/BUEC500C1/twitter-summarizer-rest-service-lijunwei19/blob/master/demo_picture/Demo.PNG)
 
