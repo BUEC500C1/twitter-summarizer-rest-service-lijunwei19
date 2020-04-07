@@ -28,7 +28,7 @@ pip3 install tweepy
 
 pip3 install flask
 
-pip3 install flask_rest
+pip install Flask-RESTful
 
 pip3 install pytest
 ```
