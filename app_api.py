@@ -6,10 +6,13 @@ import time
 
 
 app = Flask(__name__)
-api = Api(app)
 
-class tweets(Resource):
-  def get(self, twitter_id):
+@app.route('/')
+def hello():
+    return "Hello World!"
+
+@app.route('/search/<twitter_id>')
+def search( twitter_id):
       twitter_video(twitter_id)   
       path = os.path.join(app.root_path, 'video/')     
       file_path = f'{path}{twitter_id}better.mp4'   
@@ -20,8 +23,8 @@ class tweets(Resource):
       return 'response time out'
 
 
-class download_video(Resource):
-  def get(self, twitter_id):
+@app.route('/download/<twitter_id>')
+def download(twitter_id):
       path = os.path.join(app.root_path, 'video') 
       filename = f'{twitter_id}better.mp4'   
       try :    
@@ -30,8 +33,7 @@ class download_video(Resource):
         return str(e)
 
 
-api.add_resource(tweets, '/search/<twitter_id>')
-api.add_resource(download_video, '/download/<twitter_id>')
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port =80)
