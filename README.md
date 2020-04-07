@@ -7,6 +7,7 @@ These instruction will help you get you a copy of the project up and running on 
 Install FFmpeg Source File  
 
 [FFmpeg source file](https://www.ffmpeg.org/download.html)
+[install](https://linuxize.com/post/how-to-install-ffmpeg-on-ubuntu-18-04/)
 
 Apply for Twitter API keys  -- step by step 
 
