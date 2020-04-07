@@ -16,6 +16,10 @@ Apply for Twitter API keys  -- step by step
 
 Install Python Library
 ```
+apt install python3-pip
+
+apt-get install git-core
+
 pip3 install pillow
 
 pip3 install requests
